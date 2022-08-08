@@ -1,0 +1,22 @@
+{% extends "_site.html" %}
+
+{% block content %}
+
+<h3>Sessions:</h3>
+{% for fasession in fa.sessions.values() %}
+<h4>{{ fasession.target }} [pid: {{ fasession.pid }}]</h4>
+<!--<p>{{ fasession|jinja_dir }}</p>-->
+    {% if fasession.init_complete %}
+    <p>FRIDA VERSION: {{ fasession.frida_version }}, FRIDA SCRIPT RUNTIME: {{ fasession.frida_script_runtime }}</p>
+    <p>PLATFORM: {{ fasession.platform }}, ARCH: {{ fasession.arch }}</p>
+    <p>PAGE_SIZE: {{ fasession.page_size }}, POINTER_SIZE: {{ fasession.pointer_size}}</p>
+    <p>CODE_SIGNING_POLICY: {{ fasession.code_signing_policy }}</p>
+    <p>FRIDA_HEAP_SIZE: {{ fasession.frida_heap_size }}</p>
+    <p>DEBUGGER ATTACHED: {{ fasession.debugger_attached }}</p>
+    {% endif %}
+{% else %}
+<p>There are no sessions :(</p>
+{% endfor %}
+
+{% endblock %}
+

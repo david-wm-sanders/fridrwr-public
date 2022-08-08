@@ -1,0 +1,16 @@
+{% extends "_site.html" %}
+
+{% block content %}
+{% if rwr_session %}
+<p>Session: {{ rwr_session.target }} [pid: {{ rwr_session.pid }}]</p>
+<h3>Scripts:</h3>
+    {% for script in rwr_session.scripts.values() %}
+    <div><h4>{{ script.name }}</h4>Loaded: {{ script.loaded }}</div>
+    {% else %}
+    <div>No scripts loaded :?</div>
+    {% endfor %}
+{% else %}
+<p>No session! (if rwr_game.exe is loading, fridrwr will connect shortly, refresh!)</p>
+{% endif %}
+
+{% endblock %}

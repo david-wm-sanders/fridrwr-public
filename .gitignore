@@ -1,0 +1,10 @@
+__pycache__/
+venv/
+.idea/
+
+*.log
+*.db
+*.crt
+*.key
+
+discovery.txt
